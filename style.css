@@ -1,0 +1,24 @@
+body{
+    font-family: sans-serif;
+}
+
+li{
+    list-style:none;
+    padding: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    display: block;
+    width: auto;
+    transition: 300ms;
+}
+
+.dragover{
+    border: 1px solid #ccc;
+}
+
+.dragging{
+    opacity: .8;
+    transform: scale(0.8);
+}

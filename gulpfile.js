@@ -22,10 +22,7 @@ var lrPort = 35731;
 /** File paths */
 var dist = 'dist';
 
-var htmlFiles = 'app/**/*.html';
-var htmlBuild = dist;
-
-var jsxFiles = 'app/jsx/**/*.jsx';
+var jsxFiles = 'src/jsx/**/*.jsx';
 
 var vendorFiles = [
     'bower_components/react/react-with-addons.js',
@@ -39,17 +36,10 @@ gulp.task('vendor', function () {
         pipe(gulp.dest(vendorBuild));
 });
 
-
-gulp.task('html', function () {
-    return gulp.src(htmlFiles).
-        pipe(gulp.dest(htmlBuild));
-});
-
-
 function compileScripts(watch) {
     gutil.log('Starting browserify');
 
-    var entryFile = './app/jsx/app.jsx';
+    var entryFile = './src/demo.jsx';
     es6ify.traceurOverrides = {experimental: true};
 
     var bundler;
@@ -61,7 +51,6 @@ function compileScripts(watch) {
 
     bundler.require(requireFiles);
     bundler.transform(reactify);
-    bundler.transform(es6ify.configure(/.jsx/));
 
     var rebundle = function () {
         var stream = bundler.bundle({ debug: true});
@@ -72,7 +61,7 @@ function compileScripts(watch) {
 
         stream.pipe(gulp.dest('dist/bundle'));
     }
-        
+
     bundler.on('update', rebundle);
     return rebundle();
 }
@@ -80,7 +69,7 @@ function compileScripts(watch) {
 
 gulp.task('server', function (next) {
     var server = connect();
-    server.use(connect.static(dist)).listen(serverPort, next);
+    server.use(connect.static('.')).listen(serverPort, next);
 });
 
 
@@ -110,7 +99,6 @@ gulp.task('default', ['vendor', 'server'], function () {
     }
 
     compileScripts(true);
-    initWatch(htmlFiles, 'html');
 
     gulp.watch([dist + '/**/*'], reloadPage);
 });
