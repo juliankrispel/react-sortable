@@ -109,7 +109,7 @@ var Sortable = React.createClass({
     render: function(){
         var _this = this
 
-        return <ol>
+        return <ol className={this.props.className}>
             {this.props.children.map(function(child, index){
                 var bum = 'dd-item-'+index
                 return <li
