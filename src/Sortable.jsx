@@ -115,6 +115,7 @@ var Sortable = React.createClass({
                 return <li
                     key={index}
                     data-id={bum}
+                    className={_this.props.itemClassName}
                     onDragEnd={_this.onDragEnd.bind(_this, index)}
                     onDragOver={_this.onDragOver.bind(_this, index)}
                     onDragStart={_this.onDragStart.bind(_this, index)}
