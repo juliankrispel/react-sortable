@@ -1,6 +1,6 @@
 {
-  "name": "react-es6-browserify",
-  "version": "0.0.5",
+  "name": "react-sortable",
+  "version": "0.0.1",
   "dependencies": {},
   "devDependencies": {
     "babel-jest": "*",
