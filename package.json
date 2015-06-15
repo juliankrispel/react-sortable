@@ -1,6 +1,7 @@
 {
   "name": "react-sortable",
   "version": "0.0.1",
+  "main": "src/Sortable.jsx",
   "dependencies": {},
   "devDependencies": {
     "babel-jest": "*",
